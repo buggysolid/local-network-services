@@ -1,0 +1,54 @@
+version: "3"
+
+services:
+  pihole:
+    image: pihole/pihole:latest
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+      - "67:67/udp"
+      - "80:80/tcp"
+    networks:
+      default:
+        ipv4_address: 172.28.0.3
+    environment:
+      PIHOLE_DNS_: "172.28.0.2;172.28.0.2"
+    volumes:
+      - "./etc-pihole:/etc/pihole"
+      - "./etc-dnsmasq.d:/etc/dnsmasq.d"
+
+    cap_add:
+      - NET_ADMIN
+    restart: always
+
+  searx:
+    image: searxng/searxng:latest
+    ports:
+      - "8080:8080/tcp"
+    networks:
+      default:
+        ipv4_address: 172.28.0.4
+    restart: always
+
+  unbound:
+    image: klutchell/unbound:latest
+    networks:
+      default:
+        ipv4_address: 172.28.0.2
+    healthcheck:
+      test: ["CMD", "dig", "-p", "53", "google.com", "@127.0.0.1"]
+      interval: 30s
+      timeout: 2s
+      retries: 3
+      start_period: 30s
+    volumes:
+      - ./etc-unbound:/etc/unbound/custom.conf.d
+    restart: always
+
+networks:
+  default:
+    driver: bridge
+    ipam:
+      config:
+      - subnet: 172.28.0.0/24
+        gateway: 172.28.0.1
