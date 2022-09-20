@@ -15,6 +15,7 @@ services:
       PIHOLE_DNS_: "172.28.0.2;172.28.0.2"
       CACHE_SIZE: 0
       CUSTOM_CACHE_SIZE: 0
+      QUERY_LOGGING: false
     volumes:
       - "./etc-pihole:/etc/pihole"
       - "./etc-dnsmasq.d:/etc/dnsmasq.d"
