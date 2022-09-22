@@ -21,7 +21,7 @@ services:
       - "./etc-dnsmasq.d:/etc/dnsmasq.d"
     cap_add:
       - NET_ADMIN
-    restart: "always"
+    restart: always
 
   searx:
     image: searxng/searxng:latest
@@ -45,7 +45,7 @@ services:
       start_period: 30s
     volumes:
       - ./etc-unbound:/etc/unbound/custom.conf.d
-    restart: "always"
+    restart: always
 
 networks:
   default:
