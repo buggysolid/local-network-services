@@ -23,10 +23,10 @@ services:
       - NET_ADMIN
     restart: always
 
-  searx:
-    image: searxng/searxng:latest
+  whoogle:
+    image: benbusby/whoogle-search:latest
     ports:
-      - "8080:8080/tcp"
+      - "5000:5000/tcp"
     networks:
       default:
         ipv4_address: 172.28.0.4
