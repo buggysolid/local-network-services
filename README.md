@@ -23,10 +23,14 @@ docker-compose up -d
 
 # Use
 
+The idea behind this setup is to run the services you want on the machine that will be using them.  
+
+For example if you are on a hotel network or public wifi.  
+
+You can use this to regain a small amount of privacy without needing a full fledged VPN.  
+
 [SearX search.](http://127.0.0.1:8080)  
 [PiHole Admin.](http://127.0.0.1)   
-
-Either through DHCP or manually configuring your network interfaces.
 
 Set your primary and secondary DNS servers to the following.
 
