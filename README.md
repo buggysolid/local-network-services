@@ -29,8 +29,8 @@ For example if you are on a hotel network or public wifi.
 
 You can use this to regain a small amount of privacy without needing a full fledged VPN.  
 
-[SearX search.](http://127.0.0.1:8080)  
-[PiHole Admin.](http://127.0.0.1)   
+[SearX search.](http://127.0.0.1)  
+[PiHole Admin.](http://127.0.0.1:8080)   
 
 Set your primary and secondary DNS servers to the following.
 
