@@ -7,7 +7,7 @@ services:
       - "53:53/tcp"
       - "53:53/udp"
       - "67:67/udp"
-      - "80:80/tcp"
+      - "8080:80/tcp"
     networks:
       default:
         ipv4_address: 172.28.0.3
@@ -23,10 +23,10 @@ services:
       - NET_ADMIN
     restart: always
 
-  whoogle:
-    image: benbusby/whoogle-search:latest
+  searx:
+    image: searxng/searxng:latest
     ports:
-      - "5000:5000/tcp"
+      - "80:8080/tcp"
     networks:
       default:
         ipv4_address: 172.28.0.4
